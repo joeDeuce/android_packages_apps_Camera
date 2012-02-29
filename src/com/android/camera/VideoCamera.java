@@ -1220,6 +1220,9 @@ public class VideoCamera extends ActivityBase
         Intent intent = getIntent();
         Bundle myExtras = intent.getExtras();
 
+        videoWidth = mProfile.videoFrameWidth;
+        videoHeight = mProfile.videoFrameHeight;
+
         long requestedSizeLimit = 0;
         closeVideoFileDescriptor();
         if (mIsVideoCaptureIntent && myExtras != null) {
