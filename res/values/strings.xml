@@ -184,7 +184,7 @@
     <string name="pref_camera_picture_format_default">jpeg</string>
     
     <!-- Settings screen, Select Picture format title -->
-    <string name="pref_camera_picture_format_title">Select Picture Format</string>
+    <string name="pref_camera_picture_format_title">Picture format</string>
     
     <!-- Settings screen, picture format dialog radio button choices -->
     <string name="pref_camera_picture_format_entry_jpeg">Jpeg</string>

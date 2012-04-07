@@ -1276,8 +1276,8 @@ public class Camera extends ActivityBase implements FocusManager.Listener,
                 CameraSettings.KEY_SCENE_MODE};
         final String[] OTHER_SETTING_KEYS = {
                 CameraSettings.KEY_RECORD_LOCATION,
-                CameraSettings.KEY_PICTURE_FORMAT,
                 CameraSettings.KEY_POWER_SHUTTER,
+                CameraSettings.KEY_PICTURE_FORMAT,
                 CameraSettings.KEY_PICTURE_SIZE,
                 CameraSettings.KEY_FOCUS_MODE};
 
