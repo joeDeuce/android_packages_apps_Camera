@@ -1103,6 +1103,11 @@ public class VideoCamera extends ActivityBase
                     onShutterButtonClick();
                 }
                 return true;
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+            case KeyEvent.KEYCODE_VOLUME_UP:
+                if (mVolumeZoom) {
+                    return true;
+                }
         }
         return super.onKeyUp(keyCode, event);
     }
