@@ -99,6 +99,7 @@ public class Camera extends ActivityBase implements FocusManager.Listener,
     private static final int SHOW_TAP_TO_FOCUS_TOAST = 6;
     private static final int UPDATE_THUMBNAIL = 7;
     private static final int FINISH_PINCH_TO_ZOOM = 8;
+    private static final int START_TOUCH_TO_FOCUS = 9;
 
     // The subset of parameters we need to update in setCameraParameters().
     private static final int UPDATE_PARAM_INITIALIZE = 1;
@@ -115,6 +116,8 @@ public class Camera extends ActivityBase implements FocusManager.Listener,
     private static final int ZOOM_STOPPED = 0;
     private static final int ZOOM_START = 1;
     private static final int ZOOM_STOPPING = 2;
+
+    private static final int TOUCH_TO_FOCUS_START_DELAY = 150; // milliseconds
 
     private int mZoomState = ZOOM_STOPPED;
     private boolean mSmoothZoomSupported = false;
@@ -332,6 +335,13 @@ public class Camera extends ActivityBase implements FocusManager.Listener,
 
                 case FINISH_PINCH_TO_ZOOM: {
                     mStartZoom = false;
+                    break;
+                }
+
+                case START_TOUCH_TO_FOCUS: {
+                    if (msg.obj != null) {
+                        mFocusManager.onTouch((MotionEvent)(msg.obj));
+                    }
                     break;
                 }
             }
@@ -1706,6 +1716,9 @@ public class Camera extends ActivityBase implements FocusManager.Listener,
 
         // Do Pinch zoom
         if (e.getAction() > 1) {
+            // Remove any previous touch to focus requests
+            mHandler.removeMessages(START_TOUCH_TO_FOCUS);
+
             switch (e.getAction() & MotionEvent.ACTION_MASK) {
                 case MotionEvent.ACTION_POINTER_DOWN:
                    oldDistance = getDistance(e);
@@ -1745,10 +1758,17 @@ public class Camera extends ActivityBase implements FocusManager.Listener,
         }
 
         // Do not trigger a focus during a pinch-to-zoom operation
-        if (mStartZoom)
+        if (mStartZoom) {
             return false;
+        }
 
-        return mFocusManager.onTouch(e);
+        // Delay touch to focus for a few milliseconds in order to prevent mixups
+        // between pinch to zoom touch to focus handling
+        Message touchToFocusMessage = mHandler.obtainMessage(START_TOUCH_TO_FOCUS);
+        touchToFocusMessage.obj = MotionEvent.obtain(e);
+        mHandler.sendMessageDelayed(touchToFocusMessage, TOUCH_TO_FOCUS_START_DELAY);
+
+        return true;
     }
 
     // Determine the space between the two touch points
