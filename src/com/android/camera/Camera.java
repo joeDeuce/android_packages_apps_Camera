@@ -1878,7 +1878,8 @@ public class Camera extends ActivityBase implements FocusManager.Listener,
                     // Start auto-focus immediately to reduce shutter lag. After
                     // the shutter button gets the focus, onShutterButtonFocus()
                     // will be called again but it is fine.
-                    if (collapseCameraControls()) return true;
+                    if (collapseCameraControls())
+                        return true;
                     onShutterButtonFocus(true);
                     if (mShutterButton.isInTouchMode()) {
                         mShutterButton.requestFocusFromTouch();
@@ -2129,11 +2130,11 @@ public class Camera extends ActivityBase implements FocusManager.Listener,
             mParameters.setAutoWhiteBalanceLock(mFocusManager.getAeAwbLock());
         }
 
-        if (mFocusAreaSupported && mFocusManager.getFocusAreas() != null) {
+        if (mFocusAreaSupported) {
             mParameters.setFocusAreas(mFocusManager.getFocusAreas());
         }
 
-        if (mMeteringAreaSupported && mFocusManager.getMeteringAreas() != null) {
+        if (mMeteringAreaSupported) {
             // Use the same area for focus and metering.
             mParameters.setMeteringAreas(mFocusManager.getMeteringAreas());
         }
