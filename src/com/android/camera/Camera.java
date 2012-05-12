@@ -1046,8 +1046,8 @@ public class Camera extends ActivityBase implements FocusManager.Listener,
             String pictureFormat = mParameters.get(KEY_PICTURE_FORMAT);
             String title = Util.createJpegName(dateTaken);
             int orientation = Exif.getOrientation(data);
-            Uri uri = Storage.addImage(mContentResolver, title, pictureFormat,
-                    dateTaken, loc, orientation, data, width, height);
+	   boolean eStorage = !mPreferences.getString(CameraSettings.KEY_EXTERNAL_STORAGE, "off").equals("off");
+            Uri uri = Storage.addImage(mContentResolver, eStorage, title, pictureFormat, dateTaken, loc, orientation, data, width, height);
             if (uri != null) {
                 boolean needThumbnail;
                 synchronized (this) {
@@ -1319,6 +1319,7 @@ public class Camera extends ActivityBase implements FocusManager.Listener,
                 CameraSettings.KEY_POWER_SHUTTER,
                 CameraSettings.KEY_VOLUME_ZOOM,
                 CameraSettings.KEY_PICTURE_FORMAT,
+                CameraSettings.KEY_EXTERNAL_STORAGE,
                 CameraSettings.KEY_PICTURE_SIZE,
                 CameraSettings.KEY_FOCUS_MODE,
                 CameraSettings.KEY_TIMER_MODE};
