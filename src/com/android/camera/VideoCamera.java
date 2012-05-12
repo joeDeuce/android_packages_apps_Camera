@@ -534,7 +534,7 @@ public class VideoCamera extends ActivityBase
         final String[] OTHER_SETTING_KEYS = {
                     CameraSettings.KEY_RECORD_LOCATION,
                     CameraSettings.KEY_POWER_SHUTTER,
-                    CameraSettings.KEY_VOLUME_ZOOM};
+                    CameraSettings.KEY_VOLUME_ZOOM,
                     CameraSettings.KEY_EXTERNAL_STORAGE};
 
         CameraPicker.setImageResourceId(R.drawable.ic_switch_video_facing_holo_light);
