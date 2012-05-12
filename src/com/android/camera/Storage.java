@@ -41,6 +41,8 @@ public class Storage {
 
     public static final String E_DIRECTORY = E_DCIM + "/Camera";
 
+    public static final String RAW_DIRECTORY = DCIM + "/Camera/raw";
+
     // Match the code in MediaProvider.computeBucketValues().
     public static final String BUCKET_ID =
             String.valueOf(DIRECTORY.toLowerCase().hashCode());
