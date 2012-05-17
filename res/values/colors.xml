@@ -18,7 +18,7 @@
 */
 -->
 <resources>
-    <color name="recording_time_elapsed_text">#FFFFFFFF</color>
+    <color name="recording_time_elapsed_text">@android:color/holo_blue_light</color>
     <color name="recording_time_remaining_text">#FFFF0033</color>
     <color name="on_viewfinder_label_background_color">#77333333</color>
     <color name="review_control_pressed_color">#FFcdcdcd</color>
@@ -30,7 +30,7 @@
     <color name="share_popup_blackout">#ff090909</color>
     <color name="share_icon_background">#80000000</color>
     <color name="indicator_background">#40000000</color>
-    <color name="popup_title_color">#ffffffff</color>
+    <color name="popup_title_color">@android:color/holo_blue_light</color>
     <color name="popup_background">#ff282828</color>
     <color name="pano_custom_dialog_background">#FF666666</color>
     <color name="pano_progress_empty">#FF2E2E2E</color>
