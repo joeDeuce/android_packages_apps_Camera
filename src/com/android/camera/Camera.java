@@ -2222,6 +2222,7 @@ public class Camera extends ActivityBase implements FocusManager.Listener,
             updateCameraParametersPreference();
         }
 
+        CameraSettings.dumpParameters(mParameters);
         mCameraDevice.setParameters(mParameters);
     }
 
