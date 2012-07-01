@@ -124,7 +124,9 @@ public class EffectsRecorder {
      * Some effects require libraries not available on all devices
      */
     public static boolean isEffectSupported(int effectId) {
-        switch (effectId) {
+
+        return false;
+/*        switch (effectId) {
             case EFFECT_GOOFY_FACE:
                 return Filter.isAvailable("com.google.android.filterpacks.facedetect.GoofyRenderFilter");
             case EFFECT_BACKDROPPER:
@@ -132,7 +134,7 @@ public class EffectsRecorder {
             default:
                 return false;
         }
-    }
+*/    }
 
     public EffectsRecorder(Context context) {
         if (mLogVerbose) Log.v(TAG, "EffectsRecorder created (" + this + ")");
