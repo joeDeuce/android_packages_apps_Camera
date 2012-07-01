@@ -125,6 +125,7 @@ public class EffectsRecorder {
      */
     public static boolean isEffectSupported(int effectId) {
 
+// Dirty hack to disable Goofy Rendering
         return false;
 /*        switch (effectId) {
             case EFFECT_GOOFY_FACE:
